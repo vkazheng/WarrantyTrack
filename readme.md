@@ -14,7 +14,7 @@ Feel free to contribute to this project.
 
 1. Fork the project and upload it to your Apache/Ngix server.
 2. Import the included MySql DB. 
-3. Adjust the sqlog.php file to point to your DB.
+3. Adjust the API/sqlog.php file to point to your DB.
 4. Your first time authentication details are:
   ```
   admin
@@ -42,3 +42,17 @@ Login:
 - Auto installer
 - Redesign code
 - SMS/ Email system.
+
+## NOTE:
+Error:
+Uncaught Error: Call to undefined function mysqli_fetch_all() in Domain/panel.php:17
+
+Issue seems to be 'mysqli' and 'mysqlnd' are not working together. I had the same issue in cpanel
+
+Steps:
+1) Go to CPanel dashboard
+2) Go to 'Select PHP Version', you should see a bunch of checkboxes
+3) Set PHP version (5.4 or above)
+4) Uncheck the 'mysqli' extension and check both 'mysqlind' and 'nd_mysqli'
+
+Apparently 'nd_mysqli' is 'mysqli' but configured to work with 'mysqlind' and to make it work you have to uncheck 'mysqli' due to settings conflicts.
